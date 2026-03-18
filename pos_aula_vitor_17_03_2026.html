@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resumo Pós-Aula — Vitor — CZK English</title>
+
+  <style>
+    :root{
+      --page-bg: #f4f7fa;
+      --card-bg: #fff;
+      --accent: #2f86e6;
+      --accent-dark: #1f6fd1;
+      --green: #36b37e;
+      --muted: #6b7280;
+      --border: #e6eef8;
+      --box-radius: 12px;
+      --card-width: 720px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:48px 20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--card-width);
+      background:var(--card-bg);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 6px 22px rgba(33,47,60,0.06);
+      border:1px solid rgba(15,33,64,0.03);
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .badge{
+      background:linear-gradient(180deg,#fff,#f2fbff);
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.85rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:1.3rem;
+      color:#0f1724;
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:0.92rem;
+      margin-top:6px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 6px 14px rgba(47,134,230,0.12);
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--accent);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+
+    main{margin-top:18px;}
+    section{margin-top:18px;}
+
+    .panel{
+      background:#fbfdff;
+      border-radius:12px;
+      padding:16px;
+      border:1px solid var(--border);
+    }
+
+    .outline-card{
+      border-radius:10px;
+      border:1px solid var(--border);
+      padding:16px;
+      background:#fff;
+    }
+
+    .vocab-grid{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .vocab{
+      flex:1;
+      min-width:220px;
+      border-radius:10px;
+      padding:14px;
+      border:2px solid #dfeefe;
+      background:#fff;
+    }
+
+    .vocab.green{
+      border-color:#c9f3dc;
+      background:#f5fff6;
+    }
+
+    .vocab h3{
+      margin:0;
+      font-size:1rem;
+      color:#154360;
+    }
+
+    .vocab p{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .media-row{
+      display:flex;
+      gap:14px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .media-btn{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:700;
+      color:var(--accent);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-width:200px;
+      justify-content:center;
+    }
+
+    .homework{
+      background:#f3fff6;
+      border:1px solid #d7f5df;
+      border-radius:10px;
+      padding:14px;
+      margin-top:10px;
+    }
+
+    .speaking{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border:1px solid var(--border);
+      max-width:640px;
+    }
+
+    .speaking h2{
+      margin:0 0 10px 0;
+      font-size:1.05rem;
+      color:#0f1724;
+    }
+
+    .talk-table{
+      width:100%;
+      border-collapse:collapse;
+      border-radius:10px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid #e1e9f5;
+      font-size:0.9rem;
+    }
+
+    .talk-table th,
+    .talk-table td{
+      padding:8px 10px;
+      text-align:left;
+    }
+
+    .talk-table th{
+      background:#eef4ff;
+      color:#1b3556;
+      font-weight:700;
+      border-bottom:1px solid #dde6fa;
+    }
+
+    .row-teacher{
+      background:#e7f2ff;
+    }
+
+    .row-student{
+      background:#e8f7ef;
+    }
+
+    .talk-label{
+      font-weight:700;
+    }
+
+    .talk-percent{
+      font-weight:700;
+      color:#0f1724;
+    }
+
+    .talk-time{
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:20px;
+      color:var(--muted);
+      font-size:0.9rem;
+      text-align:center;
+    }
+
+    @media (max-width:720px){
+      .card{padding:18px;border-radius:14px;}
+      .vocab-grid{flex-direction:column;}
+      .media-row{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article class="card" role="main">
+      <header>
+        <div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="badge">PÓS-AULA</span>
+            <h1>Reações sociais, prefixo mis- e leitura sobre first day in a new city</h1>
+          </div>
+          <div class="meta" style="margin-top:8px;">
+            <strong>Professor:</strong> César &nbsp;•&nbsp;
+            <strong>Aluno:</strong> Vitor &nbsp;•&nbsp;
+            <strong>Data:</strong> 17/03/2026
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="#" onclick="window.print();return false;">Imprimir / Salvar PDF</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <p style="margin:0;font-weight:600;color:#08325a;">
+            Resumo da aula presencial com warm-up usando intensifiers, atividade de correção de significado, prefixo mis-, reações com congratulate/sympathize e leitura sobre first impressions em uma cidade nova.
+          </p>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Resumo da Aula</h2>
+          <div class="outline-card">
+            <p style="margin:0 0 8px 0;">
+              Nesta aula, começamos com um <strong>warm-up de speaking</strong> usando intensifiers na lousa, como <em>really, quite, pretty, kind of, so</em> e <em>very</em>. O objetivo foi fazer respostas um pouco mais completas e naturais, evitando respostas muito secas. As perguntas giraram em torno da semana, humor, cansaço, clima, fome e dificuldade com o inglês.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Depois, fizemos a atividade <strong>Mean Detective</strong>, em que os alunos precisavam perceber quando uma frase estava semanticamente errada e corrigi-la com expressões como <em>Do you mean...?</em> e <em>You mean...</em>. Essa parte trabalhou especialmente relações familiares e reações inadequadas a situações tristes, reforçando a diferença entre entender a frase literalmente e perceber quando o significado não combina com o contexto.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Na sequência, fizemos um aquecimento rápido com o prefixo <strong>mis-</strong>, mostrando a ideia de “algo feito de forma errada”, com palavras como <em>misunderstand, mispronounce, mishear, misspell</em> e <em>misread</em>. Isso ajudou a conectar vocabulário com situações reais do dia a dia, como entender algo errado, ouvir errado ou escrever errado.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Também houve uma atividade de reação social com <strong>congratulate</strong> e <strong>sympathize</strong>. Os alunos ouviam situações como <em>“my dog died”</em> ou <em>“my wallet was stolen”</em> e precisavam reagir de forma apropriada, usando frases como <em>That’s terrible</em>, <em>That’s awful</em>, <em>Congratulations</em> e <em>I’m so sorry</em>. Nessa parte, também vimos quando usar <strong>Happy Birthday</strong> e <strong>Happy Anniversary</strong>.
+            </p>
+            <p style="margin:0;">
+              Por fim, a aula passou por um texto sobre <strong>first day in a new city</strong>, com foco em vocabulário e compreensão geral. As palavras de dúvida trabalhadas foram <strong>stepped off</strong>, <strong>in a hurry</strong>, <strong>suddenly</strong> e <strong>exchange student</strong>. Além disso, houve uma explicação importante sobre <strong>life</strong>, <strong>lives</strong> e <strong>live</strong>, diferenciando substantivo, plural, verbo e adjetivo/advérbio em contextos distintos.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Key Vocabulary</h2>
+          <div class="vocab-grid">
+            <div class="vocab">
+              <h3>sympathize</h3>
+              <p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+                <em>(pt) mostrar empatia, se solidarizar</em><br>
+                <small>I sympathized with my friend after the bad news.</small>
+              </p>
+            </div>
+            <div class="vocab green">
+              <h3>misunderstand</h3>
+              <p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+                <em>(pt) entender errado</em><br>
+                <small>Sorry, I misunderstood your message.</small>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Vocabulário da aula</h2>
+          <div class="outline-card">
+            <h3 style="margin-top:0;">Intensifiers revisados</h3>
+            <ul>
+              <li><strong>really</strong> – realmente, muito</li>
+              <li><strong>quite</strong> – bastante</li>
+              <li><strong>pretty</strong> – bem, razoavelmente</li>
+              <li><strong>kind of</strong> – meio, mais ou menos</li>
+              <li><strong>so</strong> – tão, muito</li>
+              <li><strong>very</strong> – muito</li>
+            </ul>
+
+            <h3>Vocabulário principal</h3>
+            <ul>
+              <li><strong>congratulate</strong> – parabenizar</li>
+              <li><strong>sympathize</strong> – se solidarizar, demonstrar empatia</li>
+              <li><strong>Happy Birthday</strong> – feliz aniversário (de nascimento)</li>
+              <li><strong>Happy Anniversary</strong> – feliz aniversário de casamento / de data comemorativa</li>
+              <li><strong>life</strong> – vida</li>
+              <li><strong>lives</strong> – vidas / vive (verbo com he, she, it)</li>
+              <li><strong>live</strong> – ao vivo / viver</li>
+              <li><strong>stepped off</strong> – desceu, saiu de um lugar/meio de transporte</li>
+              <li><strong>in a hurry</strong> – com pressa</li>
+              <li><strong>suddenly</strong> – de repente</li>
+              <li><strong>exchange student</strong> – estudante de intercâmbio</li>
+            </ul>
+
+            <h3>Prefixo mis-</h3>
+            <ul>
+              <li><strong>misunderstand</strong> – entender errado</li>
+              <li><strong>mispronounce</strong> – pronunciar errado</li>
+              <li><strong>mishear</strong> – ouvir errado</li>
+              <li><strong>misspell</strong> – soletrar/escrever errado</li>
+              <li><strong>misread</strong> – ler errado, interpretar errado</li>
+            </ul>
+
+            <h3>Frases e reações úteis</h3>
+            <ul>
+              <li><strong>That’s terrible.</strong> – Que terrível.</li>
+              <li><strong>That’s awful.</strong> – Que horrível.</li>
+              <li><strong>I’m so sorry.</strong> – Sinto muito.</li>
+              <li><strong>Congratulations!</strong> – Parabéns!</li>
+              <li><strong>That’s amazing news!</strong> – Que notícia incrível!</li>
+              <li><strong>Do you mean...?</strong> – Você quer dizer...?</li>
+              <li><strong>You mean...</strong> – Você quer dizer...</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Frases modelo da aula</h2>
+          <div class="outline-card">
+            <ul>
+              <li>I’m pretty tired today.</li>
+              <li>My week was really busy.</li>
+              <li>Do you mean your father-in-law?</li>
+              <li>You mean that was bad news, not good news.</li>
+              <li>I’m so sorry to hear that.</li>
+              <li>Congratulations on your birthday!</li>
+              <li>Have you ever misheard song lyrics?</li>
+              <li>I sometimes mispronounce English words.</li>
+              <li>He stepped off the bus in a hurry.</li>
+              <li>She is an exchange student.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Correções importantes</h2>
+          <div class="outline-card">
+            <ul>
+              <li><strong>Congratulate x sympathize</strong><br>
+                Foi reforçado que essas duas reações não podem ser trocadas.<br>
+                ❌ <em>Congratulations, your dog died.</em><br>
+                ✅ <em>I’m so sorry.</em> / <em>That’s terrible.</em><br>
+                Em notícias ruins, a reação correta é de empatia, não de celebração.
+              </li>
+              <li><strong>Happy Birthday x Happy Anniversary</strong><br>
+                A aula destacou quando cada expressão deve ser usada.<br>
+                ✅ <em>Happy Birthday</em> para aniversário de nascimento<br>
+                ✅ <em>Happy Anniversary</em> para aniversário de casamento ou data comemorativa
+              </li>
+              <li><strong>Life / lives / live</strong><br>
+                Houve explicação para evitar confusão entre palavras parecidas na escrita e na pronúncia:<br>
+                ✅ <em>life</em> = vida<br>
+                ✅ <em>lives</em> = vidas / vive<br>
+                ✅ <em>live</em> = ao vivo / viver
+              </li>
+              <li><strong>Falsas reações ao contexto</strong><br>
+                Na atividade de correção de significado, o foco foi perceber quando a frase até “parece correta” na gramática, mas está errada no sentido social ou emocional.
+              </li>
+              <li><strong>Mis- = algo feito errado</strong><br>
+                O prefixo <em>mis-</em> foi trabalhado como padrão produtivo de vocabulário, ajudando a entender e formar novas palavras.
+              </li>
+              <li><strong>Stepped off</strong><br>
+                Foi trabalhado no sentido de “sair / descer de algum lugar”, especialmente em contexto de transporte ou chegada a um local.
+              </li>
+              <li><strong>In a hurry</strong><br>
+                Expressão revisada com sentido de pressa, muito comum em narrativas e descrições de rotina.
+              </li>
+              <li><strong>Exchange student</strong><br>
+                Foi reforçado que não significa apenas “student”, mas especificamente um aluno em intercâmbio.
+              </li>
+              <li><strong>Do you mean...?</strong><br>
+                A estrutura foi usada como ferramenta de correção natural e educada para reformular significados errados durante a interação.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Transcrição &amp; Gravação</h2>
+          <div class="media-row">
+            <a class="media-btn" href="#" role="button">📄 Aula presencial</a>
+
+            <a
+              class="media-btn"
+              href="#"
+              role="button"
+              style="background:linear-gradient(180deg,#1f6fd1,#2f86e6);color:#fff;border:none;min-width:260px;"
+            >
+              🎥 Aula presencial (sem gravação)
+            </a>
+          </div>
+        </section>
+
+        <section class="speaking" aria-label="Distribuição de fala">
+          <h2>Tempo de Fala (Talk Time)</h2>
+          <table class="talk-table">
+            <thead>
+              <tr>
+                <th>Quem falou</th>
+                <th>Porcentagem</th>
+                <th>Duração aproximada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-teacher">
+                <td><span class="talk-label">César (Professor)</span></td>
+                <td><span class="talk-percent">52%</span></td>
+                <td class="talk-time">~31 minutos</td>
+              </tr>
+              <tr class="row-student">
+                <td><span class="talk-label">Vitor</span></td>
+                <td><span class="talk-percent">48%</span></td>
+                <td class="talk-time">~29 minutos</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Homework</h2>
+          <div class="homework">
+            <p style="margin:0 0 8px 0;">
+              📌 <strong>Lição de casa (como combinado em aula):</strong>
+            </p>
+            <ul style="margin:0 0 6px 18px;padding:0;font-size:0.94rem;color:var(--muted);">
+              <li>LEMBRAR de LER O POS AULA DE 2 A 3X NA SEMANA</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px;">
+            <a class="btn" href="https://wa.me" style="background:#25D366;border-radius:10px;box-shadow:none;">
+              💬 Falar comigo no WhatsApp
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <p style="margin:18px 0 0 0;color:var(--muted);font-size:0.9rem;">
+          © 2025 CZK English • Este conteúdo é exclusivo para fins educacionais. • Suporte: czkenglish@gmail.com
+        </p>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
